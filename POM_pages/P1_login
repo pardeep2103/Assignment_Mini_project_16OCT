@@ -1,0 +1,50 @@
+package POM_pages;
+
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class login_page {
+	WebDriver driver;
+	
+	@FindBy(xpath="")
+	WebElement un;
+	
+	@FindBy(xpath="//input[@id='user-name']")
+	WebElement usern;
+	
+	@FindBy(xpath="//input[@name='password']")
+	WebElement passw;
+	
+	@FindBy(xpath="//input[@id='login-button']")
+	WebElement buttons;
+	
+	public login_page(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	public void enter_usern(String username1)
+	{
+		usern.sendKeys(username1);
+	}
+	public void enter_passw(String password1)
+	{
+		passw.sendKeys(password1);
+	}
+	public void click_login()
+	{
+		buttons.click();
+	}	
+	public void aleart2 (){ //excilpitwait
+		WebDriverWait wt = new WebDriverWait(driver, Duration.ofSeconds(10));
+		Alert a = wt.until(ExpectedConditions.alertIsPresent());
+		a.accept();
+}
+}
